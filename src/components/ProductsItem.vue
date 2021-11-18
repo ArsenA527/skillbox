@@ -32,7 +32,12 @@ export default {
 
   .catalog__pic {
     width: 100%;
-    background: olivedrab;
+  }
+
+  .catalog__pic img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
   }
 
   .catalog__info {
