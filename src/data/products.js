@@ -1,69 +1,75 @@
 export default [
 
   {
-    title: 'Перчатки боксерские Everlast Pro 10 oz',
-    price: 2390,
-    imgsrc: '/img/black-gloves.webp',
+    title: 'Радионяня Motorola MBP16',
+    price: 3690,
+    imgsrc: '/img/radio.jpg',
   },
 
   {
-    title: 'Боксерки Box Hog 2.0',
-    price: 7490,
-    imgsrc: '/img/shoes-black-storm.webp',
+    title: 'Ультразвуковая зубная щётка Playbrush Smart Sonic',
+    price: 5660,
+    imgsrc: '/img/toothbrush.jpg',
   },
 
   {
-    title: 'Боксерки Green Hill Storm',
+    title: 'Смартфон Xiaomi Mi Mix 3 6/128GB',
+    price: 21790,
+    imgsrc: '/img/phone.jpg',
+  },
+
+  {
+    title: 'Электроскейт Razor Cruiser',
+    price: 24690,
+    imgsrc: '/img/board.jpg',
+  },
+
+  {
+    title: 'Смартфон Xiaomi Mi A3 4/64GB Android One',
+    price: 14960,
+    imgsrc: '/img/phone-2.jpg',
+  },
+
+  {
+    title: 'Смартфон Xiaomi Redmi 6/128GB',
+    price: 8960,
+    imgsrc: '/img/phone-3.jpg',
+  },
+
+  {
+    title: 'Электрический дрифт-карт Razor Crazy Cart',
+    price: 39900,
+    imgsrc: '/img/bicycle.jpg',
+  },
+
+  {
+    title: 'Гироскутер Razor Hovertrax 2.0',
+    price: 34900,
+    imgsrc: '/img/wheels.jpg',
+  },
+
+  {
+    title: 'Детский трюковой самокат Razor Grom',
     price: 4990,
-    imgsrc: '/img/shoes-blue-storm.webp',
+    imgsrc: '/img/scooter.jpg',
   },
 
   {
-    title: 'Защита корпуса Everlast',
-    price: 13999,
-    imgsrc: '/img/coach-vest.webp',
+    title: 'Роллерсёрф Razor RipStik Air Pro',
+    price: 6690,
+    imgsrc: '/img/ripstik.jpg',
   },
 
   {
-    title: 'Тренерские палки Fight Expert Sticks',
-    price: 3490,
-    imgsrc: '/img/sticks-black.webp',
+    title: 'Наушники AirPods с беспроводным зарядным футляром',
+    price: 16560,
+    imgsrc: '/img/airpods.jpg',
   },
 
   {
-    title: 'Лапа ракетка для бокса BoyBo Stain',
-    price: 1990,
-    imgsrc: '/img/stain-green.webp',
-  },
-
-  {
-    title: 'Лапы Venum Light',
-    price: 5590,
-    imgsrc: '/img/paw.webp',
-  },
-
-  {
-    title: 'Профессиональный боксерский мешок Green Hill, 50 кг',
-    price: 32890,
-    imgsrc: '/img/heavy-bag.webp',
-  },
-
-  {
-    title: 'Настенная апперкотная подушка FightTech Leather',
-    price: 18000,
-    imgsrc: '/img/fight-tech-leather.webp',
-  },
-
-  {
-    title: 'Мешок боксерский конус Fightech DFC кожа',
-    price: 38790,
-    imgsrc: '/img/fight-tech.webp',
-  },
-
-  {
-    title: 'Груша боксерская Everlast на подставке Reflex Bag',
-    price: 14900,
-    imgsrc: '/img/reflex-bag.webp',
+    title: 'Наушники Sony',
+    price: 30690,
+    imgsrc: '/img/headphones.jpg',
   },
 
   {
@@ -82,12 +88,6 @@ export default [
     title: 'Крестовая стойка на 2 боксерских мешка Green Hill',
     price: 59990,
     imgsrc: '/img/suspension-boxing.webp',
-  },
-
-  {
-    title: 'Груша боксерская Everlast скоростная Everhide 23 x 15',
-    price: 2990,
-    imgsrc: '/img/Everhide.webp',
   },
 
 ];
