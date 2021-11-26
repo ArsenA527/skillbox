@@ -1,47 +1,30 @@
 <template>
   <ul class="catalog__pagination pagination">
     <li class="pagination__item">
-      <a class="pagination__link pagination__link--arrow pagination__link--disabled"
-        aria-label="Предыдущая страница">
+      <a
+        href="#"
+        class="pagination__link pagination__link--arrow pagination__link--disabled"
+        aria-label="Предыдущая страница"
+      >
         <svg width="8" height="14" fill="currentColor">
           <use xlink:href="#icon-arrow-left"></use>
         </svg>
       </a>
     </li>
-    <li class="pagination__item">
-      <a class="pagination__link pagination__link--current">
-        1
-      </a>
-    </li>
-    <li class="pagination__item">
-      <a class="pagination__link" href="#">
-        2
-      </a>
-    </li>
-    <li class="pagination__item">
-      <a class="pagination__link" href="#">
-        3
-      </a>
-    </li>
-    <li class="pagination__item">
-      <a class="pagination__link" href="#">
-        4
-      </a>
-    </li>
-    <li class="pagination__item">
-      <a class="pagination__link" href="#">
-        ...
-      </a>
-    </li>
-    <li class="pagination__item">
-      <a class="pagination__link" href="#">
-        10
+    <li class="pagination__item" v-for="pageNumber in pages" :key="pageNumber">
+      <a
+        href="#"
+        class="pagination__link"
+        :class="{'pagination__link--current': pageNumber === page}"
+        @click.prevent="paginate(pageNumber)"
+      >
+        {{ pageNumber }}
       </a>
     </li>
     <li class="pagination__item">
       <a
-        class="pagination__link pagination__link--arrow"
         href="#"
+        class="pagination__link pagination__link--arrow"
         aria-label="Следующая страница"
       >
         <svg width="8" height="14" fill="currentColor">
@@ -53,12 +36,20 @@
 </template>
 
 <script>
-
 export default {
+  model: {
+    prop: 'page',
+    event: 'paginate',
+  },
   props: ['page', 'count', 'perPage'],
   computed: {
     pages() {
       return Math.ceil(this.count / this.perPage);
+    },
+  },
+  methods: {
+    paginate(page) {
+      this.$emit('paginate', page);
     },
   },
 };

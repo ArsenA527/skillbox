@@ -1,7 +1,7 @@
 <template>
   <section class="catalog">
     <ProductsList :products="products" />
-    <BasePagination :page="page" :count="countProducts" :per-page="productsPerPage" />
+    <BasePagination v-model="page" :count="countProducts" :per-page="productsPerPage" />
   </section>
 </template>
 
