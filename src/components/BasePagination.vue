@@ -3,7 +3,8 @@
     <li class="pagination__item">
       <a
         href="#"
-        class="pagination__link pagination__link--arrow pagination__link--disabled"
+        class="pagination__link pagination__link--arrow"
+        :class="{'pagination__link--disabled': atFirstPage}"
         aria-label="Предыдущая страница"
       >
         <svg width="8" height="14" fill="currentColor">
@@ -25,6 +26,7 @@
       <a
         href="#"
         class="pagination__link pagination__link--arrow"
+        :class="{'pagination__link--disabled': atLastPage}"
         aria-label="Следующая страница"
       >
         <svg width="8" height="14" fill="currentColor">
@@ -45,6 +47,12 @@ export default {
   computed: {
     pages() {
       return Math.ceil(this.count / this.perPage);
+    },
+    atFirstPage() {
+      return this.page === 1;
+    },
+    atLastPage() {
+      return this.page === this.pages;
     },
   },
   methods: {
