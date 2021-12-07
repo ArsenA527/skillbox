@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 <template>
   <main class="content container">
     <div class="content__top content__top--catalog">
