@@ -14,6 +14,7 @@
         :price-from.sync="filterPriceFrom"
         :price-to.sync="filterPriceTo"
         :category-id.sync="filterCategoryId"
+        :color-value.sync="filterColor"
       />
       <section class="catalog">
         <ProductsList :products="products" />
@@ -45,6 +46,7 @@ export default {
       filterPriceFrom: 0,
       filterPriceTo: 0,
       filterCategoryId: 0,
+      filterColor: 0,
       page: 1,
       productsPerPage: 3,
     };
@@ -62,6 +64,10 @@ export default {
       if (this.filterCategoryId) {
         // eslint-disable-next-line max-len
         filterProducts = filterProducts.filter((product) => product.categoryId === this.filterCategoryId);
+      }
+      if (this.filterColor) {
+        // eslint-disable-next-line max-len
+        filterProducts = filterProducts.filter((product) => product.colorValue === this.filterColor);
       }
       return filterProducts;
     },

@@ -46,60 +46,27 @@
           <fieldset class="form__block">
             <legend class="form__legend">Цвет</legend>
             <ul class="colors">
-              <li class="colors__item">
+              <li
+                class="colors__item"
+                v-for="color in colors"
+                :key="color"
+              >
                 <label class="colors__label">
                   <input
+                    v-model="currentcolorValue"
                     class="colors__radio sr-only"
                     type="radio" name="color"
-                    value="#73B6EA"
-                    checked
+                    :value="color"
                   >
-                  <span class="colors__value" style="background-color: #73B6EA;">
+                  <span class="colors__value" :style="{'background-color': color}">
                   </span>
                 </label>
-              </li>
-              <li class="colors__item">
-                <label class="colors__label">
-                  <input class="colors__radio sr-only" type="radio" name="color" value="#FFBE15">
-                  <span class="colors__value" style="background-color: #FFBE15;">
-                  </span>
-                </label>
-              </li>
-              <li class="colors__item">
-                <label class="colors__label">
-                  <input class="colors__radio sr-only" type="radio" name="color" value="#939393">
-                  <span class="colors__value" style="background-color: #939393;">
-                  </span></label>
-              </li>
-              <li class="colors__item">
-                <label class="colors__label">
-                  <input class="colors__radio sr-only" type="radio" name="color" value="#8BE000">
-                  <span class="colors__value" style="background-color: #8BE000;">
-                  </span></label>
-              </li>
-              <li class="colors__item">
-                <label class="colors__label">
-                  <input class="colors__radio sr-only" type="radio" name="color" value="#FF6B00">
-                  <span class="colors__value" style="background-color: #FF6B00;">
-                  </span></label>
-              </li>
-              <li class="colors__item">
-                <label class="colors__label">
-                  <input class="colors__radio sr-only" type="radio" name="color" value="#FFF">
-                  <span class="colors__value" style="background-color: #FFF;">
-                  </span></label>
-              </li>
-              <li class="colors__item">
-                <label class="colors__label">
-                  <input class="colors__radio sr-only" type="radio" name="color" value="#000">
-                  <span class="colors__value" style="background-color: #000;">
-                  </span></label>
               </li>
             </ul>
           </fieldset>
 
           <fieldset class="form__block">
-            <legend class="form__legend">Объемб в ГБ</legend>
+            <legend class="form__legend">Объем в ГБ</legend>
             <ul class="check-list">
               <li class="check-list__item">
                 <label class="check-list__label">
@@ -186,6 +153,7 @@
 <script>
 
 import categories from '../data/categories';
+import colors from '../data/colors';
 
 export default {
   data() {
@@ -193,14 +161,19 @@ export default {
       currentPriceFrom: 0,
       currentPriceTo: 0,
       currentcategoryId: 0,
+      currentcolorValue: 0,
     };
   },
 
-  props: ['priceFrom', 'priceTo', 'categoryId'],
+  props: ['priceFrom', 'priceTo', 'categoryId', 'colorValue'],
 
   computed: {
     categories() {
       return categories;
+    },
+
+    colors() {
+      return colors;
     },
   },
 
@@ -217,6 +190,10 @@ export default {
       this.currentcategoryId = value;
     },
 
+    colorValue(value) {
+      this.currentcolorValue = value;
+    },
+
   },
 
   methods: {
@@ -224,15 +201,13 @@ export default {
       this.$emit('update:priceFrom', this.currentPriceFrom);
       this.$emit('update:priceTo', this.currentPriceTo);
       this.$emit('update:categoryId', this.currentcategoryId);
+      this.$emit('update:colorValue', this.currentcolorValue);
     },
     reset() {
       this.$emit('update:priceFrom', 0);
       this.$emit('update:priceTo', 0);
       this.$emit('update:categoryId', 0);
-
-      // this.currentPriceFrom = 0;
-      // this.currentPriceTo = 0;
-      // this.currentcategoryId = 0;
+      this.$emit('update:colorValue', 0);
     },
 
   },
