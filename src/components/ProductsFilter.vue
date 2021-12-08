@@ -29,7 +29,7 @@
               <select
                 class="form__select"
                 type="text" name="category"
-                v-model.number="currentcategoryId"
+                v-model.number="currentСategoryId"
               >
                 <option value="0">Все категории</option>
                 <option
@@ -49,16 +49,16 @@
               <li
                 class="colors__item"
                 v-for="color in colors"
-                :key="color"
+                :key="color.id"
               >
                 <label class="colors__label">
                   <input
-                    v-model="currentcolorValue"
+                    v-model="currentСolorValue"
                     class="colors__radio sr-only"
                     type="radio" name="color"
-                    :value="color"
+                    :value="color.value"
                   >
-                  <span class="colors__value" :style="{'background-color': color}">
+                  <span class="colors__value" :style="{'background-color': color.value}">
                   </span>
                 </label>
               </li>
@@ -160,8 +160,8 @@ export default {
     return {
       currentPriceFrom: 0,
       currentPriceTo: 0,
-      currentcategoryId: 0,
-      currentcolorValue: 0,
+      currentСategoryId: 0,
+      currentСolorValue: 0,
     };
   },
 
@@ -187,11 +187,11 @@ export default {
     },
 
     categoryId(value) {
-      this.currentcategoryId = value;
+      this.currentСategoryId = value;
     },
 
     colorValue(value) {
-      this.currentcolorValue = value;
+      this.currentСolorValue = value;
     },
 
   },
@@ -200,8 +200,8 @@ export default {
     submit() {
       this.$emit('update:priceFrom', this.currentPriceFrom);
       this.$emit('update:priceTo', this.currentPriceTo);
-      this.$emit('update:categoryId', this.currentcategoryId);
-      this.$emit('update:colorValue', this.currentcolorValue);
+      this.$emit('update:categoryId', this.currentСategoryId);
+      this.$emit('update:colorValue', this.currentСolorValue);
     },
     reset() {
       this.$emit('update:priceFrom', 0);
