@@ -3,6 +3,7 @@ export default [
   {
     id: 1,
     categoryId: 4,
+    colors: ['#73B6EA', '#8BE000', '#222'],
     title: 'Радионяня Motorola MBP16',
     price: 3690,
     imgsrc: '/img/radio.jpg',
@@ -11,6 +12,7 @@ export default [
   {
     id: 2,
     categoryId: 1,
+    colors: ['#73B6EA', '#8BE000', '#222'],
     title: 'Ультразвуковая зубная щётка Playbrush Smart Sonic',
     price: 5660,
     imgsrc: '/img/toothbrush.jpg',
@@ -19,6 +21,7 @@ export default [
   {
     id: 3,
     categoryId: 2,
+    colors: ['#73B6EA', '#8BE000', '#222'],
     title: 'Смартфон Xiaomi Mi Mix 3 6/128GB',
     price: 21790,
     imgsrc: '/img/phone.jpg',
@@ -27,6 +30,7 @@ export default [
   {
     id: 4,
     categoryId: 4,
+    colors: ['#73B6EA', '#8BE000', '#222'],
     title: 'Электроскейт Razor Cruiser',
     price: 24690,
     imgsrc: '/img/board.jpg',
@@ -35,6 +39,7 @@ export default [
   {
     id: 5,
     categoryId: 2,
+    colors: ['#73B6EA', '#8BE000', '#222'],
     title: 'Смартфон Xiaomi Mi A3 4/64GB Android One',
     price: 14960,
     imgsrc: '/img/phone-2.jpg',
@@ -43,6 +48,7 @@ export default [
   {
     id: 6,
     categoryId: 2,
+    colors: ['#73B6EA', '#8BE000', '#222'],
     title: 'Смартфон Xiaomi Redmi 6/128GB',
     price: 8960,
     imgsrc: '/img/phone-3.jpg',
@@ -51,6 +57,7 @@ export default [
   {
     id: 7,
     categoryId: 3,
+    colors: ['#73B6EA', '#8BE000', '#222'],
     title: 'Электрический дрифт-карт Razor Crazy Cart',
     price: 39900,
     imgsrc: '/img/bicycle.jpg',
@@ -59,6 +66,7 @@ export default [
   {
     id: 8,
     categoryId: 3,
+    colors: ['#73B6EA', '#8BE000', '#222'],
     title: 'Гироскутер Razor Hovertrax 2.0',
     price: 34900,
     imgsrc: '/img/wheels.jpg',
@@ -67,6 +75,7 @@ export default [
   {
     id: 9,
     categoryId: 3,
+    colors: ['#73B6EA', '#8BE000', '#222'],
     title: 'Детский трюковой самокат Razor Grom',
     price: 4990,
     imgsrc: '/img/scooter.jpg',
@@ -75,6 +84,7 @@ export default [
   {
     id: 10,
     categoryId: 3,
+    colors: ['#73B6EA', '#8BE000', '#222'],
     title: 'Роллерсёрф Razor RipStik Air Pro',
     price: 6690,
     imgsrc: '/img/ripstik.jpg',
@@ -83,6 +93,7 @@ export default [
   {
     id: 11,
     categoryId: 5,
+    colors: ['#73B6EA', '#8BE000', '#222'],
     title: 'Наушники AirPods с беспроводным зарядным футляром',
     price: 16560,
     imgsrc: '/img/airpods.jpg',
@@ -91,6 +102,7 @@ export default [
   {
     id: 12,
     categoryId: 5,
+    colors: ['#73B6EA', '#8BE000', '#222', '#FFBE15'],
     title: 'Наушники Sony',
     price: 30690,
     imgsrc: '/img/headphones.jpg',
@@ -99,6 +111,7 @@ export default [
   {
     id: 13,
     categoryId: 3,
+    colors: ['#73B6EA', '#8BE000', '#222'],
     title: 'Груша пневматическая на растяжках Speed',
     price: 7990,
     imgsrc: '/img/speed-bag.webp',
@@ -107,6 +120,7 @@ export default [
   {
     id: 14,
     categoryId: 3,
+    colors: ['#73B6EA', '#8BE000', '#222', '#FFF'],
     title: 'Боксерская груша-шар FightTech Proffi Leather, 45 кг',
     price: 19000,
     imgsrc: '/img/fightech.webp',
@@ -115,6 +129,7 @@ export default [
   {
     id: 15,
     categoryId: 3,
+    colors: ['#73B6EA', '#8BE000', '#222'],
     title: 'Крестовая стойка на 2 боксерских мешка Green Hill',
     price: 59990,
     imgsrc: '/img/suspension-boxing.webp',
