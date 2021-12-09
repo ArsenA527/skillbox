@@ -6,7 +6,7 @@
         class="pagination__link pagination__link--arrow"
         :class="{'pagination__link--disabled': atFirstPage}"
         aria-label="Предыдущая страница"
-        @click.prevent="paginate(this.page - 1)"
+        @click.prevent="paginate(page - 1)"
       >
         <svg width="8" height="14" fill="currentColor">
           <use xlink:href="#icon-arrow-left"></use>
@@ -29,7 +29,7 @@
         class="pagination__link pagination__link--arrow"
         :class="{'pagination__link--disabled': atLastPage}"
         aria-label="Следующая страница"
-        @click.prevent="paginate(this.page + 1)"
+        @click.prevent="paginate(page + 1)"
       >
         <svg width="8" height="14" fill="currentColor">
           <use xlink:href="#icon-arrow-right"></use>
