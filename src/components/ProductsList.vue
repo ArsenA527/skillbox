@@ -1,14 +1,12 @@
 <template>
     <section class="catalog">
     <ul class="catalog__list">
-      <li  class="catalog__item" v-for="(product) in products" :key="product.id">
-        <ProductsItem
-          :imgsrc="product.imgsrc"
-          :title="product.title"
-          :price="product.price"
-          :colors="product.colors"
-        />
-      </li>
+      <ProductsItem
+        v-for="(product) in products"
+        :key="product.id"
+        :product="product"
+        @gotoPage="(pageName, pageParams) => $emit('gotoPage', pageName, pageParams)"
+      />
     </ul>
   </section>
 </template>

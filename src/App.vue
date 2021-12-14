@@ -3,7 +3,11 @@
   <ProductPage v-else-if="currentPage === 'product'"/>
   <NotFoundPage v-else/> -->
 
-  <component :is="currentPageComponent" :page-params="currentPageParams"/>
+  <component
+    :is="currentPageComponent"
+    :page-params="currentPageParams"
+    @gotoPage="(pageName, pageParams) => gotoPage(pageName, pageParams)"
+  />
 </template>
 
 <script>
@@ -28,6 +32,13 @@ export default {
   computed: {
     currentPageComponent() {
       return routes[this.currentPage] || 'NotFoundPage';
+    },
+  },
+
+  methods: {
+    gotoPage(pageName, pageParams) {
+      this.currentPage = pageName;
+      this.currentPageParams = pageParams || {};
     },
   },
 
