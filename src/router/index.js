@@ -9,7 +9,7 @@ import ProductPage from '@/pages/ProductPage';
 
 Vue.use(VueRouter);
 
-const routers = [{
+const routes = [{
     name: 'main',
     component: MainPage,
     path: '/',
@@ -28,7 +28,7 @@ const routers = [{
 ];
 
 const router = new VueRouter({
-  routers,
+  routes,
 });
 
 export default router;
