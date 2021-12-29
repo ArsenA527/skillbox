@@ -1,5 +1,8 @@
+/* eslint-disable max-len */
 import Vue from 'vue';
 import Vuex from 'vuex';
+// eslint-disable-next-line quotes
+import products from "@/data/products";
 
 Vue.use(Vuex);
 
@@ -26,6 +29,21 @@ export default new Vuex.Store({
           amount,
         });
       }
+    },
+  },
+  getters: {
+    cartDetailProducts(state) {
+      // eslint-disable-next-line arrow-body-style
+      return state.cartProducts.map((item) => {
+        return {
+          ...item,
+          product: products.find((p) => p.id === item.productId),
+        };
+      });
+    },
+    cartTotalPrice(state, getters) {
+      return getters.cartDetailProducts.reduce((acc, item) => (item.product.price * item
+        .amount) + acc, 0);
     },
   },
 });
