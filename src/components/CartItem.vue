@@ -3,7 +3,7 @@
     <li class="cart__item product">
       <div class="product__pic">
         <img
-          :src="item.product.image"
+          :src="item.product.imgsrc"
           width="120"
           height="120"
           :alt="item.product.title"
@@ -70,8 +70,10 @@ export default {
   },
 
   method: {
+    // ...mapMutation({ deleteProduct: 'deleteCartProduct' }),
+
     deleteProduct(productId) {
-      this.$store.commit('deleteCartProduct', { productId });
+      this.$store.commit('deleteCartProduct', productId);
     },
   },
 };

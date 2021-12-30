@@ -41,7 +41,7 @@ export default new Vuex.Store({
       }
     },
     deleteCartProduct(state, productId) {
-      state.cartProducts = state.cartProducts.filter((el) => el.productId !== productId);
+      state.cartProducts = state.cartProducts.filter((item) => item.productId !== productId);
     },
   },
   getters: {
@@ -57,6 +57,9 @@ export default new Vuex.Store({
     cartTotalPrice(state, getters) {
       return getters.cartDetailProducts.reduce((acc, item) => (item.product.price * item
         .amount) + acc, 0);
+    },
+    cartTotalAmount(state, getters) {
+      return getters.cartDetailProducts.reduce((acc, item) => +item.amount + acc, 0);
     },
   },
 });

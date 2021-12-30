@@ -18,7 +18,7 @@
         Корзина
       </h1>
       <span class="content__info">
-        3 товара
+        {{ totalAmount | numberFormat }} товара
       </span>
     </div>
 
@@ -62,7 +62,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters({ products: 'cartDetailProducts', totalPrice: 'cartTotalPrice' }),
+    ...mapGetters({ products: 'cartDetailProducts', totalPrice: 'cartTotalPrice', totalAmount: 'cartTotalAmount' }),
 
     products() {
       return this.$store.getters.cartDetailProducts;
