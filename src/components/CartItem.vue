@@ -69,7 +69,7 @@ export default {
     },
   },
 
-  method: {
+  methods: {
     // ...mapMutation({ deleteProduct: 'deleteCartProduct' }),
 
     deleteProduct(productId) {
