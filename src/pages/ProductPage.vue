@@ -136,6 +136,7 @@
                     <use xlink:href="#icon-plus"></use>
                   </svg>
                 </button>
+                <!-- <BaseAmountChanges :amount="productAmount"/> -->
               </div>
 
               <button class="button button--primery" type="submit">
@@ -222,8 +223,10 @@ import products from '@/data/products';
 import categories from '@/data/categories';
 import gotoPage from '@/helpers/gotoPage';
 import numberFormat from '@/helpers/numberFormat';
+// import BaseAmountChanges from '@/components/BaseAmountChanges.vue';
 
 export default {
+  // components: { BaseAmountChanges },
   data() {
     return {
       productAmount: 1,
