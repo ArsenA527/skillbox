@@ -1,6 +1,6 @@
 <template>
   <div class="form__counter">
-    <button type="button" aria-label="Убрать один товар" @click.prevent="count(amount - 1)">
+    <button type="button" aria-label="Убрать один товар" @click.prevent="decrementItem">
       <svg width="12" height="12" fill="currentColor">
         <use xlink:href="#icon-minus"></use>
       </svg>
@@ -8,7 +8,7 @@
 
     <input type="text" v-model="amount">
 
-    <button type="button" aria-label="Добавить один товар" @click.prevent="count(amount + 1)">
+    <button type="button" aria-label="Добавить один товар" @click.prevent="incrementItem">
       <svg width="12" height="12" fill="currentColor">
         <use xlink:href="#icon-plus"></use>
       </svg>
@@ -27,8 +27,11 @@ export default {
   props: ['amount'],
 
   methods: {
-    count(amount) {
-      if (amount > 0) this.$emit('count', amount);
+    decrementItem() {
+      this.$emit('decrement');
+    },
+    incrementItem() {
+      this.$emit('increment');
     },
   },
 };

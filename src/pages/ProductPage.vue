@@ -123,7 +123,7 @@
 
             <div class="item__row">
               <div class="form__counter">
-                <button type="button" aria-label="Убрать один товар">
+                <!-- <button type="button" aria-label="Убрать один товар">
                   <svg width="12" height="12" fill="currentColor">
                     <use xlink:href="#icon-minus"></use>
                   </svg>
@@ -135,8 +135,12 @@
                   <svg width="12" height="12" fill="currentColor">
                     <use xlink:href="#icon-plus"></use>
                   </svg>
-                </button>
-                <!-- <BaseAmountChanges :amount="productAmount"/> -->
+                </button> -->
+                <BaseAmountChanges
+                  :amount="productAmount"
+                  @increment="increment()"
+                  @decrement="decrement()"
+                />
               </div>
 
               <button class="button button--primery" type="submit">
@@ -219,14 +223,16 @@
 </template>
 
 <script>
+
+// import { mapGetters } from 'vuex';
 import products from '@/data/products';
 import categories from '@/data/categories';
 import gotoPage from '@/helpers/gotoPage';
 import numberFormat from '@/helpers/numberFormat';
-// import BaseAmountChanges from '@/components/BaseAmountChanges.vue';
+import BaseAmountChanges from '@/components/BaseAmountChanges.vue';
 
 export default {
-  // components: { BaseAmountChanges },
+  components: { BaseAmountChanges },
   data() {
     return {
       productAmount: 1,
@@ -246,11 +252,25 @@ export default {
   },
 
   methods: {
+    // ...mapGetters([
+    //   'incrementCartItem',
+    //   'decrementCartItem',
+    // ]),
     gotoPage,
     addToCart() {
       // eslint-disable-next-line max-len
       this.$store.commit('addProductToCart', { productId: this.product.id, amount: this.productAmount });
     },
+    increment() {
+      // this.incrementCartItem(index);
+      this.$store.commit('incrementCartItem', this.product.id);
+    },
+
+    decrement() {
+      this.$store.commit('decrementCartItem', this.product.id);
+      // this.decrementCartItem(index);
+    },
+
   },
 };
 </script>
