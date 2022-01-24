@@ -263,11 +263,11 @@ export default {
     },
     increment() {
       // this.incrementCartItem(index);
-      this.$store.commit('incrementCartItem', this.product.id);
+      this.$store.commit('incrementCartItem');
     },
 
     decrement() {
-      this.$store.commit('decrementCartItem', this.product.id);
+      this.$store.commit('decrementCartItem');
       // this.decrementCartItem(index);
     },
 

@@ -152,8 +152,10 @@
 
 <script>
 
-import categories from '../data/categories';
+import axios from 'axios';
 import colors from '../data/colors';
+// eslint-disable-next-line import/named
+import { API_BASE_URL } from '../config';
 
 export default {
   data() {
@@ -162,6 +164,8 @@ export default {
       currentPriceTo: 0,
       currentСategoryId: 0,
       currentСolorValue: 0,
+
+      categoriesData: null,
     };
   },
 
@@ -169,7 +173,7 @@ export default {
 
   computed: {
     categories() {
-      return categories;
+      return this.categoriesData ? this.categoriesData.items : [];
     },
 
     colors() {
@@ -210,6 +214,16 @@ export default {
       this.$emit('update:colorValue', 0);
     },
 
+    loadCategories() {
+      // eslint-disable-next-line prefer-template
+      axios.get(API_BASE_URL + '/api/productCategories')
+      // eslint-disable-next-line no-return-assign
+        .then((response) => this.categoriesData = response.data);
+    },
+  },
+
+  created() {
+    this.loadCategories();
   },
 };
 </script>
