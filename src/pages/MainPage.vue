@@ -1,5 +1,5 @@
 <template>
-    <main class="content container">
+  <main class="content container">
     <div class="content__top content__top--catalog">
       <h1 class="content__title">
         Каталог
@@ -17,6 +17,10 @@
         :color-value.sync="filterColor"
       />
       <section class="catalog">
+        <div v-if="productsLoading">Загрузка товаров...</div>
+        <div v-if="productsLoadingFailed">Произошла ошибка при загрузке товаров
+          <button @click.prevent="loadProducts">Попробовать еще раз</button>
+        </div>
         <ProductsList
           :products="products"
         />
@@ -29,8 +33,8 @@
 <script>
 
 import axios from 'axios';
-// eslint-disable-next-line import/named
-import { API_BASE_URL } from '../config';
+// // eslint-disable-next-line import/named
+// import { API_BASE_URL } from '../config';
 // import products from '@/data/products';
 import ProductsList from '@/components/ProductsList.vue';
 import BasePagination from '@/components/BasePagination.vue';
@@ -53,13 +57,13 @@ export default {
       page: 1,
       productsPerPage: 3,
       productsData: null,
+      productsLoading: false,
+      productsLoadingFailed: false,
     };
   },
 
   computed: {
     products() {
-      // const offset = (this.page - 1) * this.productsPerPage;
-      // return this.filteredProducts.slice(offset, offset + this.productsPerPage);
       return this.productsData
         ? this.productsData.items.map((product) => ({
           ...product,
@@ -68,17 +72,17 @@ export default {
         : [];
     },
     countProducts() {
-      // return this.filteredProducts.length;
       return this.productsData ? this.productsData.pagination.total : 0;
     },
   },
 
   methods: {
     loadProducts() {
+      this.productsLoading = true;
+      this.productsLoadingFailed = false;
       clearTimeout(this.loadPorductsTimer);
       this.loadPorductsTimer = setTimeout(() => {
-        // eslint-disable-next-line prefer-template
-        axios.get(API_BASE_URL + '/api/products', {
+        axios.get('https://vue-study.skillbox.cc/api/products', {
           params: {
             page: this.page,
             limit: this.productsPerPage,
@@ -88,8 +92,12 @@ export default {
           },
         })
           // eslint-disable-next-line no-return-assign
-          .then((response) => this.productsData = response.data);
-      }, 0);
+          .then((response) => this.productsData = response.data)
+          // eslint-disable-next-line no-return-assign
+          .then(() => this.productsLoading = false)
+          // eslint-disable-next-line no-return-assign
+          .catch(() => this.productsLoadingFailed = true);
+      }, 500);
     },
   },
   watch: {
