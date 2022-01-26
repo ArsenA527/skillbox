@@ -1,2 +1,2 @@
 /* eslint-disable no-undef */
-export default API_BASE_URL = 'https://vue-study.skillbox.cc';
+export default 'https://vue-study.skillbox.cc';

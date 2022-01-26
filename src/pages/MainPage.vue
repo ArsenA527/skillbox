@@ -34,7 +34,7 @@
 
 import axios from 'axios';
 // // eslint-disable-next-line import/named
-// import { API_BASE_URL } from '../config';
+import API_BASE_URL from '@/config';
 // import products from '@/data/products';
 import ProductsList from '@/components/ProductsList.vue';
 import BasePagination from '@/components/BasePagination.vue';
@@ -82,7 +82,8 @@ export default {
       this.productsLoadingFailed = false;
       clearTimeout(this.loadPorductsTimer);
       this.loadPorductsTimer = setTimeout(() => {
-        axios.get('https://vue-study.skillbox.cc/api/products', {
+        // eslint-disable-next-line prefer-template
+        axios.get(API_BASE_URL + '/api/products', {
           params: {
             page: this.page,
             limit: this.productsPerPage,

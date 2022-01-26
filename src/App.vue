@@ -118,10 +118,27 @@
 
 <script>
 import CartIndicator from '@/components/CartIndicator.vue';
+// eslint-disable-next-line import/order
+import { mapActions, mapMutations } from 'vuex';
 
 export default {
   components: {
     CartIndicator,
+  },
+
+  created() {
+    // this.$store.dispatch('loadCart');
+    const usserAccessKey = localStorage.getItem('usserAccessKey');
+
+    if (usserAccessKey) {
+      this.updateUsserAccessKey(usserAccessKey);
+    }
+    this.loadCart();
+  },
+
+  methods: {
+    ...mapActions(['loadCart']),
+    ...mapMutations(['updateUsserAccessKey']),
   },
 };
 </script>
