@@ -151,11 +151,10 @@
 </template>
 
 <script>
-
+/* eslint-disable */
 import axios from 'axios';
-import colors from '../data/colors';
-// eslint-disable-next-line import/named
 import API_BASE_URL from '../config';
+import colors from '../data/colors';
 
 export default {
   data() {
@@ -215,9 +214,7 @@ export default {
     },
 
     loadCategories() {
-      // eslint-disable-next-line prefer-template
       axios.get(API_BASE_URL + '/api/productCategories')
-      // eslint-disable-next-line no-return-assign
         .then((response) => this.categoriesData = response.data);
     },
   },

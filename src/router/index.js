@@ -1,6 +1,4 @@
-/* eslint-disable indent */
-/* eslint-disable import/extensions */
-/* eslint-disable linebreak-style */
+/* eslint-disable  */
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import MainPage from '@/pages/MainPage';

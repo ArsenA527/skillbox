@@ -117,9 +117,8 @@
 </template>
 
 <script>
-import CartIndicator from '@/components/CartIndicator.vue';
-// eslint-disable-next-line import/order
 import { mapActions, mapMutations } from 'vuex';
+import CartIndicator from '@/components/CartIndicator.vue';
 
 export default {
   components: {

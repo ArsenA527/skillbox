@@ -1,8 +1,5 @@
-/* eslint-disable arrow-body-style */
-/* eslint-disable arrow-parens */
-/* eslint-disable max-len */
+/* eslint-disable  */
 import axios from 'axios';
-// eslint-disable-next-line import/order
 import API_BASE_URL from '@/config';
 import Vue from 'vue';
 import Vuex from 'vuex';
@@ -78,9 +75,7 @@ export default new Vuex.Store({
   },
   getters: {
     cartDetailProducts(state) {
-      // eslint-disable-next-line arrow-body-style
       return state.cartProducts.map((item) => {
-        // eslint-disable-next-line prefer-destructuring
         const product = state.cartProductsData.find(p => p.product.id === item.productId)
           .product;
         return {
@@ -104,11 +99,9 @@ export default new Vuex.Store({
   actions: {
     loadCart(context) {
       axios
-        // eslint-disable-next-line prefer-template
         .get(API_BASE_URL + '/api/baskets', {
           UsserAccessKey: context.state.usserAccessKey,
         })
-        // eslint-disable-next-line arrow-parens
         .then(response => {
           if (!response.data.accessKey) {
             localStorage.setItem('usserAccessKey', response.data.accessKey);

@@ -31,11 +31,9 @@
 </template>
 
 <script>
-
+/* eslint-disable */
 import axios from 'axios';
-// // eslint-disable-next-line import/named
 import API_BASE_URL from '@/config';
-// import products from '@/data/products';
 import ProductsList from '@/components/ProductsList.vue';
 import BasePagination from '@/components/BasePagination.vue';
 import ProductsFilter from '@/components/ProductsFilter.vue';
@@ -82,7 +80,6 @@ export default {
       this.productsLoadingFailed = false;
       clearTimeout(this.loadPorductsTimer);
       this.loadPorductsTimer = setTimeout(() => {
-        // eslint-disable-next-line prefer-template
         axios.get(API_BASE_URL + '/api/products', {
           params: {
             page: this.page,
@@ -92,11 +89,8 @@ export default {
             maxPrice: this.filterPriceTo,
           },
         })
-          // eslint-disable-next-line no-return-assign
           .then((response) => this.productsData = response.data)
-          // eslint-disable-next-line no-return-assign
           .then(() => this.productsLoading = false)
-          // eslint-disable-next-line no-return-assign
           .catch(() => this.productsLoadingFailed = true);
       }, 500);
     },

@@ -1,2 +1,2 @@
-/* eslint-disable no-undef */
+/* eslint-disable */
 export default 'https://vue-study.skillbox.cc';

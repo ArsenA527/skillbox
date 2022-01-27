@@ -228,8 +228,8 @@
 </template>
 
 <script>
-
-// import { mapGetters } from 'vuex';
+/* eslint-disable */
+import { mapGetters } from 'vuex';
 import axios from 'axios';
 import gotoPage from '@/helpers/gotoPage';
 import numberFormat from '@/helpers/numberFormat';
@@ -265,7 +265,6 @@ export default {
     // ]),
     gotoPage,
     addToCart() {
-      // eslint-disable-next-line max-len
       this.$store.commit('addProductToCart', { productId: this.product.id, amount: this.productAmount });
     },
     increment() {
@@ -281,13 +280,9 @@ export default {
     loadProduct() {
       this.productLoading = true;
       this.productLoadingFailed = false;
-      // eslint-disable-next-line prefer-template
       axios.get('https://vue-study.skillbox.cc/api/products/' + this.$route.params.id)
-        // eslint-disable-next-line no-return-assign
         .then((response) => this.productData = response.data)
-        // eslint-disable-next-line no-return-assign
         .catch(() => this.productLoadingFailed = true)
-        // eslint-disable-next-line no-return-assign
         .then(() => this.productLoading = false);
     },
   },
@@ -297,7 +292,6 @@ export default {
   // },
 
   watch: {
-    // eslint-disable-next-line func-names
     '$route.params.id': {
       handler() {
         this.loadProduct();
