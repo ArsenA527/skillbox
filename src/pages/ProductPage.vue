@@ -146,10 +146,17 @@
                   />
                 </div>
 
-                <button class="button button--primery" type="submit">
+                <button
+                  class="button button--primery"
+                  type="submit"
+                  :disabled="productAddedSending"
+                >
                   В корзину
                 </button>
               </div>
+
+              <div v-show="productAdded">Товар добавлен в корзину</div>
+              <div v-show="productAddedSending">Добавляем товар в корзину</div>
             </form>
           </div>
         </div>
@@ -229,7 +236,7 @@
 
 <script>
 /* eslint-disable */
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import axios from 'axios';
 import gotoPage from '@/helpers/gotoPage';
 import numberFormat from '@/helpers/numberFormat';
@@ -243,6 +250,9 @@ export default {
       productData: null,
       productLoading: false,
       productLoadingFailed: false,
+
+      productAdded: false,
+      productAddedSending: false,
     };
   },
 
@@ -259,13 +269,21 @@ export default {
   },
 
   methods: {
+    ...mapActions(['addProductToCart']),
     // ...mapGetters([
     //   'incrementCartItem',
     //   'decrementCartItem',
     // ]),
     gotoPage,
     addToCart() {
-      this.$store.commit('addProductToCart', { productId: this.product.id, amount: this.productAmount });
+      this.productAdded = false;
+      this.productAddedSending = true;
+      this.addProductToCart({productId: this.product.id, amount: this.productAmount})
+        .then(() => {
+          this.productAdded = true;
+          this.productAddedSending = false;
+        });
+      // this.$store.dispatch('addProductToCart', { productId: this.product.id, amount: this.productAmount });
     },
     increment() {
       // this.incrementCartItem(index);
@@ -285,6 +303,8 @@ export default {
         .catch(() => this.productLoadingFailed = true)
         .then(() => this.productLoading = false);
     },
+
+
   },
 
   // created() {
