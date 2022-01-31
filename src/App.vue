@@ -130,14 +130,14 @@ export default {
     const usserAccessKey = localStorage.getItem('usserAccessKey');
 
     if (usserAccessKey) {
-      this.updateUsserAccessKey(usserAccessKey);
+      this.updateUserAccessKey(usserAccessKey);
     }
     this.loadCart();
   },
 
   methods: {
     ...mapActions(['loadCart']),
-    ...mapMutations(['updateUsserAccessKey']),
+    ...mapMutations(['updateUserAccessKey']),
   },
 };
 </script>

@@ -13,7 +13,7 @@ export default new Vuex.Store({
       amount: 2,
     }],
 
-    usserAccessKey: null,
+    userAccessKey: null,
     cartProductsData: [],
   },
 
@@ -56,8 +56,8 @@ export default new Vuex.Store({
       if (state.cartProducts.amount > 1) state.cartProducts.amount -= 1;
     },
 
-    updateUsserAccessKey(state, accessKey) {
-      state.usserAccessKey = accessKey;
+    updateUserAccessKey(state, accessKey) {
+      state.userAccessKey = accessKey;
     },
 
     updateCartProductsData(state, items) {
@@ -100,12 +100,12 @@ export default new Vuex.Store({
     loadCart(context) {
       return axios
         .get(API_BASE_URL + '/api/baskets', {
-          UsserAccessKey: context.state.usserAccessKey,
+          UsserAccessKey: context.state.userAccessKey,
         })
         .then(response => {
           if (!response.data.accessKey) {
-            localStorage.setItem('usserAccessKey', response.data.accessKey);
-            context.commit('updateUsserAccessKey', response.data.accessKey);
+            localStorage.setItem('userAccessKey', response.data.accessKey);
+            context.commit('updateUserAccessKey', response.data.accessKey);
           }
           context.commit('updateCartProductsData', response.data.items);
           context.commit('syncCartProducts');
@@ -123,7 +123,7 @@ export default new Vuex.Store({
             quantity: amount,
           }, {
             params: {
-              UsserAccessKey: context.state.usserAccessKey,
+              UsserAccessKey: context.state.userAccessKey,
             }
           }).then(response => {
             context.commit('updateCartProductsData', response.data.items);
@@ -151,7 +151,7 @@ export default new Vuex.Store({
           quantity: amount,
         }, {
           params: {
-            UsserAccessKey: context.state.usserAccessKey,
+            UsserAccessKey: context.state.userAccessKey,
           }
         }).then(response => {
           context.commit('updateCartProductsData', response.data.items);
