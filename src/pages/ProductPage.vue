@@ -238,6 +238,7 @@
 /* eslint-disable */
 import { mapGetters, mapActions } from 'vuex';
 import axios from 'axios';
+import {API_BASE_URL} from '@/config';
 import gotoPage from '@/helpers/gotoPage';
 import numberFormat from '@/helpers/numberFormat';
 import BaseAmountChanges from '@/components/BaseAmountChanges.vue';
@@ -278,12 +279,11 @@ export default {
     addToCart() {
       this.productAdded = false;
       this.productAddedSending = true;
-      this.addProductToCart({productId: this.product.id, amount: this.productAmount})
+      this.addProductToCart({ productId: this.product.id, amount: this.productAmount })
         .then(() => {
           this.productAdded = true;
           this.productAddedSending = false;
         });
-      // this.$store.dispatch('addProductToCart', { productId: this.product.id, amount: this.productAmount });
     },
     increment() {
       // this.incrementCartItem(index);
@@ -298,25 +298,29 @@ export default {
     loadProduct() {
       this.productLoading = true;
       this.productLoadingFailed = false;
-      axios.get('https://vue-study.skillbox.cc/api/products/' + this.$route.params.id)
+      axios.get(API_BASE_URL + '/api/products/' + this.$route.params.id)
         .then((response) => this.productData = response.data)
         .catch(() => this.productLoadingFailed = true)
         .then(() => this.productLoading = false);
     },
 
-
   },
 
-  // created() {
-  //   this.loadProduct();
-  // },
+  created() {
+    this.loadProduct();
+  },
 
   watch: {
-    '$route.params.id': {
-      handler() {
-        this.loadProduct();
-      },
-      immediate: true,
+    // '$route.params.id': {
+    //   handler() {
+    //     this.loadProduct();
+    //   },
+    //   immediate: true,
+    // },
+    // Убрать created
+
+    '$route.params.id'() {
+      this.loadProduct();
     },
   },
 };

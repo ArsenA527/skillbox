@@ -126,11 +126,10 @@ export default {
   },
 
   created() {
-    // this.$store.dispatch('loadCart');
-    const usserAccessKey = localStorage.getItem('usserAccessKey');
+    const userAccessKey = localStorage.getItem('userAccessKey');
 
-    if (usserAccessKey) {
-      this.updateUserAccessKey(usserAccessKey);
+    if (userAccessKey) {
+      this.updateUserAccessKey(userAccessKey);
     }
     this.loadCart();
   },

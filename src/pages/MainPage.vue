@@ -33,7 +33,7 @@
 <script>
 /* eslint-disable */
 import axios from 'axios';
-import API_BASE_URL from '@/config';
+import {API_BASE_URL} from '@/config';
 import ProductsList from '@/components/ProductsList.vue';
 import BasePagination from '@/components/BasePagination.vue';
 import ProductsFilter from '@/components/ProductsFilter.vue';
@@ -52,9 +52,12 @@ export default {
       filterPriceTo: 0,
       filterCategoryId: 0,
       filterColor: 0,
+
       page: 1,
       productsPerPage: 3,
+
       productsData: null,
+
       productsLoading: false,
       productsLoadingFailed: false,
     };
@@ -90,8 +93,8 @@ export default {
           },
         })
           .then((response) => this.productsData = response.data)
-          .then(() => this.productsLoading = false)
-          .catch(() => this.productsLoadingFailed = true);
+          .catch(() => this.productsLoadingFailed = true)
+          .then(() => this.productsLoading = false);
       }, 500);
     },
   },
