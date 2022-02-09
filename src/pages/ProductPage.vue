@@ -29,7 +29,7 @@
             <img
               width="570"
               height="570"
-              :src="product.imgsrc"
+              :src="product.image.file.url"
               :alt="product.title"
             >
           </div>
@@ -204,7 +204,7 @@
 
 <script>
 /* eslint-disable */
-import { mapGetters, mapActions } from 'vuex';
+import { mapActions } from 'vuex';
 import axios from 'axios';
 import {API_BASE_URL} from '@/config';
 import gotoPage from '@/helpers/gotoPage';
