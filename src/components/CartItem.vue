@@ -15,21 +15,13 @@
       <span class="product__code">
         Артикул: {{ item.product.id }}
       </span>
-      <div class="product__counter form__counter">
-        <button type="button" aria-label="Убрать один товар">
-          <svg width="10" height="10" fill="currentColor">
-            <use xlink:href="#icon-minus"></use>
-          </svg>
-        </button>
+        <BaseAmountChanges
+          :amount="amount"
+          @increment="increment()"
+          @decrement="decrement()"
+          class="product__counter"
+        />
 
-        <input type="text" v-model.number="amount" name="count">
-
-        <button type="button" aria-label="Добавить один товар">
-          <svg width="10" height="10" fill="currentColor">
-            <use xlink:href="#icon-plus"></use>
-          </svg>
-        </button>
-      </div>
       <b class="product__price">
         {{ (item.amount * item.product.price) | numberFormat }} ₽
       </b>
@@ -48,10 +40,13 @@
 </template>
 
 <script>
-// import { mapMutation } from 'vuex';
+/* eslint-disable */
+
 import numberFormat from '@/helpers/numberFormat';
+import BaseAmountChanges from '@/components/BaseAmountChanges.vue';
 
 export default {
+  components: { BaseAmountChanges },
   props: ['item'],
 
   filters: {
@@ -70,10 +65,17 @@ export default {
   },
 
   methods: {
-    // ...mapMutation({ deleteProduct: 'deleteCartProduct' }),
 
     deleteProduct(productId) {
       this.$store.commit('deleteCartProduct', productId);
+    },
+
+    increment() {
+      this.amount++;
+    },
+
+    decrement() {
+      this.amount--;
     },
   },
 };
