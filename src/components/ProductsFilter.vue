@@ -53,12 +53,12 @@
           >
             <label class="colors__label">
               <input
-                v-model="currentСolorValue"
+                v-model="currentСolorId"
                 class="colors__radio sr-only"
                 type="radio" name="color"
-                :value="color.value"
+                :value="color.id"
               >
-              <span class="colors__value" :style="{'background-color': color.value}">
+              <span class="colors__value" :style="{'background-color': color.code}">
               </span>
             </label>
           </li>
@@ -154,7 +154,6 @@
 /* eslint-disable */
 import axios from 'axios';
 import {API_BASE_URL} from '../config';
-import colors from '../data/colors';
 
 export default {
   data() {
@@ -162,13 +161,14 @@ export default {
       currentPriceFrom: 0,
       currentPriceTo: 0,
       currentСategoryId: 0,
-      currentСolorValue: 0,
+      currentСolorId: 0,
 
       categoriesData: null,
+      colorsData: null,
     };
   },
 
-  props: ['priceFrom', 'priceTo', 'categoryId', 'colorValue'],
+  props: ['priceFrom', 'priceTo', 'categoryId', 'colorId'],
 
   computed: {
     categories() {
@@ -176,7 +176,7 @@ export default {
     },
 
     colors() {
-      return colors;
+      return this.colorsData ? this.colorsData.items : [];
     },
   },
 
@@ -193,8 +193,8 @@ export default {
       this.currentСategoryId = value;
     },
 
-    colorValue(value) {
-      this.currentСolorValue = value;
+    colorId(value) {
+      this.currentСolorId = value;
     },
 
   },
@@ -204,23 +204,29 @@ export default {
       this.$emit('update:priceFrom', this.currentPriceFrom);
       this.$emit('update:priceTo', this.currentPriceTo);
       this.$emit('update:categoryId', this.currentСategoryId);
-      this.$emit('update:colorValue', this.currentСolorValue);
+      this.$emit('update:colorId', this.currentСolorId);
     },
     reset() {
       this.$emit('update:priceFrom', 0);
       this.$emit('update:priceTo', 0);
       this.$emit('update:categoryId', 0);
-      this.$emit('update:colorValue', 0);
+      this.$emit('update:colorId', 0);
     },
 
     loadCategories() {
       axios.get(API_BASE_URL + '/api/productCategories')
         .then((response) => this.categoriesData = response.data);
     },
+
+    loadColors() {
+      axios.get(API_BASE_URL + '/api/colors')
+        .then((response) => this.colorsData = response.data);
+    },
   },
 
   created() {
     this.loadCategories();
+    this.loadColors();
   },
 };
 </script>

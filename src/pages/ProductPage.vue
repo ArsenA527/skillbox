@@ -48,42 +48,23 @@
 
               <fieldset class="form__block">
                 <legend class="form__legend">Цвет:</legend>
-                <ul class="colors">
+                <ul
+                  class="colors"
+                  v-for="color in colors"
+                  :key="color.id"
+                >
                   <li class="colors__item">
                     <label class="colors__label">
                       <input
                         class="colors__radio sr-only"
                         type="radio"
                         name="color-item"
-                        value="blue"
+                        :value="color.id"
                         checked=""
                       >
-                      <span class="colors__value" style="background-color: #73B6EA;">
+                      <span class="colors__value" :style="{'background-color': color.code}">
                       </span>
                     </label>
-                  </li>
-                  <li class="colors__item">
-                    <label class="colors__label">
-                      <input
-                        class="colors__radio sr-only"
-                        type="radio"
-                        name="color-item"
-                        value="yellow"
-                      >
-                      <span class="colors__value" style="background-color: #FFBE15;">
-                      </span>
-                    </label>
-                  </li>
-                  <li class="colors__item">
-                    <label class="colors__label">
-                      <input
-                        class="colors__radio sr-only"
-                        type="radio"
-                        name="color-item"
-                        value="gray"
-                      >
-                      <span class="colors__value" style="background-color: #939393;">
-                    </span></label>
                   </li>
                 </ul>
               </fieldset>
@@ -126,19 +107,6 @@
 
               <div class="item__row">
                 <div class="form__counter">
-                  <!-- <button type="button" aria-label="Убрать один товар">
-                    <svg width="12" height="12" fill="currentColor">
-                      <use xlink:href="#icon-minus"></use>
-                    </svg>
-                  </button>
-
-                  <input type="text" v-model="productAmount">
-
-                  <button type="button" aria-label="Добавить один товар">
-                    <svg width="12" height="12" fill="currentColor">
-                      <use xlink:href="#icon-plus"></use>
-                    </svg>
-                  </button> -->
                   <BaseAmountChanges
                     :amount="productAmount"
                     @increment="increment()"
@@ -267,14 +235,13 @@ export default {
     category() {
       return this.productData.category;
     },
+    colors() {
+      return this.productData.colors;
+    },
   },
 
   methods: {
     ...mapActions(['addProductToCart']),
-    // ...mapGetters([
-    //   'incrementCartItem',
-    //   'decrementCartItem',
-    // ]),
     gotoPage,
     addToCart() {
       this.productAdded = false;
@@ -286,13 +253,11 @@ export default {
         });
     },
     increment() {
-      // this.incrementCartItem(index);
-      this.$store.commit('incrementCartItem');
+      this.productAmount++;
     },
 
     decrement() {
-      this.$store.commit('decrementCartItem');
-      // this.decrementCartItem(index);
+      this.productAmount--;
     },
 
     loadProduct() {
