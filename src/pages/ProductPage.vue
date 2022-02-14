@@ -1,6 +1,7 @@
 <template>
   <div>
-    <main class="content container" v-if="productLoading">Загрузка товара...</main>
+    <!-- <main class="content container" v-if="productLoading">Загрузка товара...</main> -->
+    <Loader v-if="productLoading"/>
     <main class="content container" v-else-if="!productData">Не удалось загрузить товар</main>
     <main class="content container" v-else>
       <div class="content__top">
