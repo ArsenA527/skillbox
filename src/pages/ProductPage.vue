@@ -1,7 +1,7 @@
 <template>
   <div>
-    <main class="content container" v-if="productLoading">Загрузка товара...</main>
-    <!-- <Loader v-if="productLoading"/> -->
+    <main class="content container" v-if="productLoading"><Loader /></main>
+
     <main class="content container" v-else-if="!productData">Не удалось загрузить товар</main>
     <main class="content container" v-else>
       <div class="content__top">
@@ -209,9 +209,10 @@ import {API_BASE_URL} from '@/config';
 import gotoPage from '@/helpers/gotoPage';
 import numberFormat from '@/helpers/numberFormat';
 import BaseAmountChanges from '@/components/BaseAmountChanges.vue';
+import Loader from '@/components/Loader.vue';
 
 export default {
-  components: { BaseAmountChanges },
+  components: { BaseAmountChanges, Loader },
   data() {
     return {
       productAmount: 1,
@@ -262,10 +263,14 @@ export default {
     loadProduct() {
       this.productLoading = true;
       this.productLoadingFailed = false;
-      axios.get(API_BASE_URL + '/api/products/' + this.$route.params.id)
-        .then((response) => this.productData = response.data)
-        .catch(() => this.productLoadingFailed = true)
-        .then(() => this.productLoading = false);
+      clearTimeout(this.loadPorductTimer);
+      this.loadPorductTimer = setTimeout(() => {
+        return axios.get(API_BASE_URL + '/api/products/' + this.$route.params.id)
+          .then((response) => this.productData = response.data)
+          .catch(() => this.productLoadingFailed = true)
+          .then(() => this.productLoading = false);
+      }, 2000);
+
     },
 
   },
