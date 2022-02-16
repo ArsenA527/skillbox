@@ -1,7 +1,7 @@
 <template>
   <div>
-    <!-- <main class="content container" v-if="productLoading">Загрузка товара...</main> -->
-    <Loader v-if="productLoading"/>
+    <main class="content container" v-if="productLoading">Загрузка товара...</main>
+    <!-- <Loader v-if="productLoading"/> -->
     <main class="content container" v-else-if="!productData">Не удалось загрузить товар</main>
     <main class="content container" v-else>
       <div class="content__top">
@@ -109,9 +109,7 @@
               <div class="item__row">
                 <div class="form__counter">
                   <BaseAmountChanges
-                    :amount="productAmount"
-                    @increment="increment()"
-                    @decrement="decrement()"
+                    :amount.sync="productAmount"
                   />
                 </div>
 

@@ -16,9 +16,7 @@
         Артикул: {{ item.product.id }}
       </span>
         <BaseAmountChanges
-          :amount="amount"
-          @increment="increment()"
-          @decrement="decrement()"
+          :amount.sync="amount"
           class="product__counter"
         />
 
