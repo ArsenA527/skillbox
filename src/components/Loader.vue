@@ -1,18 +1,18 @@
 <template>
-<div id="cube-loader">
-  <div class="caption">
-    <div class="cube-loader">
-      <div class="cube loader-1"></div>
-      <div class="cube loader-2"></div>
-      <div class="cube loader-3"></div>
-      <div class="cube loader-4"></div>
+  <div class="cube-loader">
+    <div class="caption">
+      <div class="cube--loader">
+        <div class="cube loader-1"></div>
+        <div class="cube loader-2"></div>
+        <div class="cube loader-3"></div>
+        <div class="cube loader-4"></div>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <style scoped>
-  #cube-loader {
+  .cube-loader {
     position: fixed;
     display: flex;
     align-items: center;
@@ -21,7 +21,7 @@
     height: 50%;
   }
 
-  .cube-loader {
+  .cube--loader {
     width: 73px;
     height: 73px;
     margin: 0 auto;
@@ -69,6 +69,10 @@
   }
   .loader-4::before {
     animation-delay: 1.04s;
+  }
+
+  .loader--position {
+    position: inherit;
   }
 
   @keyframes cube-loader {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <main class="content container" v-if="productLoading"><Loader /></main>
+    <main class="content container" v-if="productLoading"><Loader class="loader--position"/></main>
 
     <main class="content container" v-else-if="!productData">Не удалось загрузить товар</main>
     <main class="content container" v-else>
@@ -49,12 +49,12 @@
 
               <fieldset class="form__block">
                 <legend class="form__legend">Цвет:</legend>
-                <ul
-                  class="colors"
-                  v-for="color in colors"
-                  :key="color.id"
-                >
-                  <li class="colors__item">
+                <ul class="colors">
+                  <li
+                    class="colors__item"
+                    v-for="color in colors"
+                    :key="color.id"
+                  >
                     <label class="colors__label">
                       <input
                         class="colors__radio sr-only"
@@ -269,7 +269,7 @@ export default {
           .then((response) => this.productData = response.data)
           .catch(() => this.productLoadingFailed = true)
           .then(() => this.productLoading = false);
-      }, 2000);
+      }, 1500);
 
     },
 
