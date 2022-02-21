@@ -130,6 +130,8 @@ export default {
 
     if (userAccessKey) {
       this.updateUserAccessKey(userAccessKey);
+      // this.addProductToCart(userAccessKey);
+      // this.deleteProductFromCart(userAccessKey);
     }
     this.loadCart();
   },
