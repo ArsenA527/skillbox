@@ -40,6 +40,7 @@
 <script>
 /* eslint-disable */
 
+import { mapActions } from 'vuex';
 import numberFormat from '@/helpers/numberFormat';
 import BaseAmountChanges from '@/components/BaseAmountChanges.vue';
 
@@ -63,9 +64,15 @@ export default {
   },
 
   methods: {
+    ...mapActions(['deleteProductFromCart']),
 
     deleteProduct(productId) {
       this.$store.commit('deleteCartProduct', productId);
+      // const userAccessKey = localStorage.getItem('userAccessKey');
+
+      // if (userAccessKey) {
+      //   this.deleteCartProduct(userAccessKey);
+      // }
     },
 
     increment() {
