@@ -162,8 +162,9 @@ export default new Vuex.Store({
         })
         .then(response => {
           context.commit('updateCartProductsData', response.data.items);
+        }).catch(() => {
           context.commit('syncCartProducts');
-        })
+        });
     }
 
   },
