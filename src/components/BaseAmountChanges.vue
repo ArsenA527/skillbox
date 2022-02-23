@@ -32,7 +32,9 @@ export default {
         return this.amount;
       },
       set(value) {
-        this.$emit('update:amount', value);
+        if (value > 0) {
+          this.$emit('update:amount', value);
+        }
       },
     },
   },

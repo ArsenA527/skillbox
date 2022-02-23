@@ -67,12 +67,7 @@ export default {
     ...mapActions(['deleteProductFromCart']),
 
     deleteProduct(productId) {
-      this.$store.commit('deleteCartProduct', productId);
-      // const userAccessKey = localStorage.getItem('userAccessKey');
-
-      // if (userAccessKey) {
-      //   this.deleteCartProduct(userAccessKey);
-      // }
+      this.deleteProductFromCart(productId);
     },
 
     increment() {

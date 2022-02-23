@@ -28,7 +28,7 @@ export default new Vuex.Store({
         item.amount = amount;
       }
     },
-    deleteCartProduct(state, productId) {
+    deleteProductCart(state, productId) {
       state.cartProducts = state.cartProducts.filter((item) => item.productId !== productId);
     },
     incrementCartItem(state) {
@@ -149,10 +149,15 @@ export default new Vuex.Store({
         });
     },
 
-    deleteProductFromCart(context) {
+    deleteProductFromCart(context, productId) {
+      context.commit('deleteProductCart', productId);
+
       return axios.delete(API_BASE_URL + '/api/baskets/products', {
           params: {
             userAccessKey: context.state.userAccessKey,
+          },
+          data: {
+            productId: productId,
           }
         })
         .then(response => {
